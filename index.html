@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sana Ses Kaydı Gibi Bir Site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FFF6EE;--peach:#FFD6C6;--straw:#EE5F7B;--mint:#C3E8D5;--butter:#FFEBAE;--lilac:#DCCBF2;--ink:#4A2B3A;--soft:#8A6577;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream) radial-gradient(#F5CFC0 1.4px,transparent 1.6px) 0 0/26px 26px;color:var(--ink);font-family:'Nunito',system-ui,sans-serif;font-size:17px;line-height:1.65;overflow-x:hidden}
+.wrap{max-width:660px;margin:0 auto;padding:0 22px;position:relative}
+.hand{font-family:'Caveat',cursive;font-weight:700}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
+section{padding:54px 0}
+h2{font-family:'Caveat',cursive;font-weight:700;font-size:clamp(2.4rem,9vw,3.3rem);line-height:1;margin:0 0 .25em;color:var(--straw);transform:rotate(-1.5deg)}
+.lead{color:var(--soft);margin:0 0 28px;max-width:32em}
+.tape{position:absolute;width:86px;height:26px;background:rgba(255,235,174,.85);top:-12px;left:50%;margin-left:-43px;transform:rotate(-3deg);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+
+/* hero */
+.hero{padding:64px 0 30px;text-align:center;position:relative;overflow:hidden}
+.fl{position:absolute;font-size:30px;animation:fl 6s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-14px) rotate(8deg)}}
+.badge{display:inline-block;background:var(--butter);padding:4px 16px;border-radius:99px;font-weight:800;font-size:.85rem;transform:rotate(-2deg);margin-bottom:12px}
+.hero h1{font-family:'Caveat',cursive;font-weight:700;font-size:clamp(3.4rem,17vw,6.4rem);line-height:.92;margin:0 0 .3em;color:var(--straw)}
+.hero h1 span{display:block;color:var(--ink);font-size:.52em}
+.hero p.in{color:var(--soft);max-width:26em;margin:0 auto 34px}
+.vm{display:flex;align-items:center;gap:12px;max-width:380px;margin:0 auto;background:#fff;border-radius:99px;padding:10px 18px 10px 10px;box-shadow:0 10px 0 -2px var(--peach),0 18px 30px -12px rgba(238,95,123,.4);border:2px solid var(--ink)}
+.pb{flex:none;width:48px;height:48px;border-radius:50%;border:0;background:var(--straw);color:#fff;font-size:1.1rem;display:grid;place-items:center;transition:transform .2s}
+.pb:active{transform:scale(.92)}
+.wave{flex:1;display:flex;align-items:center;gap:3px;height:40px}
+.wave i{flex:1;background:var(--peach);border-radius:3px;height:var(--h);transition:background .2s}
+.wave i.on{background:var(--straw)}
+.play .wave i.on{animation:bar .5s ease-in-out infinite alternate}
+@keyframes bar{to{transform:scaleY(.55)}}
+.dur{font-weight:800;font-size:.85rem;color:var(--soft);min-width:34px}
+.trans{max-width:380px;margin:20px auto 0;min-height:96px;background:var(--butter);padding:16px 18px;border-radius:6px 22px 22px 22px;text-align:left;font-size:1rem;position:relative;transform:rotate(-1deg)}
+.trans small{display:block;font-weight:800;color:var(--soft);font-size:.72rem;margin-bottom:4px}
+.tap{margin-top:16px;color:var(--soft);font-size:.92rem}
+
+/* polaroids */
+.pol{display:grid;grid-template-columns:1fr 1fr;gap:20px 14px}
+.po{background:#fff;padding:10px 10px 14px;border:0;box-shadow:0 8px 20px -8px rgba(74,43,58,.35);text-align:center;transition:transform .3s}
+.po:nth-child(1){transform:rotate(-3deg)}.po:nth-child(2){transform:rotate(2.5deg)}.po:nth-child(3){transform:rotate(2deg)}.po:nth-child(4){transform:rotate(-2.5deg)}
+.po:hover{transform:rotate(0) scale(1.03)!important}
+.ph{height:118px;display:grid;place-items:center;font-size:3rem;margin-bottom:8px;padding:10px;font-size:3rem}
+.po:nth-child(1) .ph{background:var(--peach)}.po:nth-child(2) .ph{background:var(--mint)}.po:nth-child(3) .ph{background:var(--lilac)}.po:nth-child(4) .ph{background:var(--butter)}
+.ph.t{font-size:.9rem;line-height:1.35;font-family:'Nunito';font-weight:600}
+.po b{font-family:'Caveat',cursive;font-size:1.5rem;line-height:1}
+.hint{color:var(--soft);font-size:.88rem;margin-top:16px}
+
+/* meter */
+.card{background:#fff;border:2px solid var(--ink);border-radius:26px;padding:26px 22px;box-shadow:0 8px 0 var(--peach);position:relative}
+.card .big{font-size:3.4rem;text-align:center;line-height:1;transition:transform .2s}
+.card .say{text-align:center;font-family:'Caveat',cursive;font-weight:700;font-size:1.7rem;margin:6px 0 18px;min-height:2.2em;line-height:1.1}
+input[type=range]{width:100%;accent-color:var(--straw);height:34px}
+.pct{text-align:center;font-weight:800;color:var(--soft)}
+
+/* reasons */
+.rs{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.r{aspect-ratio:1;border-radius:50%;border:2px solid var(--ink);background:var(--peach);font-size:1.6rem;display:grid;place-items:center;transition:.3s;padding:0}
+.r.open{background:var(--straw);color:#fff;transform:scale(1.08)}
+.rt{margin-top:20px;min-height:84px;background:#fff;border:2px dashed var(--straw);border-radius:20px;padding:16px 20px;font-family:'Caveat',cursive;font-weight:700;font-size:1.55rem;line-height:1.2;text-align:center;display:grid;place-items:center}
+.cnt{text-align:center;color:var(--soft);font-weight:700;margin-top:10px;font-size:.9rem}
+
+/* coupons */
+.cps{display:grid;gap:14px}
+.cp{display:flex;align-items:center;gap:14px;text-align:left;background:#fff;border:2px dashed var(--ink);border-radius:18px;padding:14px 18px;position:relative;overflow:hidden;transition:.3s}
+.cp:nth-child(1){background:var(--peach)}.cp:nth-child(2){background:var(--mint)}.cp:nth-child(3){background:var(--lilac)}.cp:nth-child(4){background:var(--butter)}
+.cp .e{font-size:2rem}
+.cp b{display:block;font-family:'Caveat',cursive;font-size:1.55rem;line-height:1}
+.cp span{font-size:.88rem}
+.cp::after{content:"KULLANILDI";position:absolute;right:12px;top:50%;font-weight:800;color:var(--straw);border:3px solid var(--straw);padding:2px 10px;border-radius:8px;transform:translateY(-50%) rotate(-12deg) scale(2);opacity:0;transition:.35s;font-size:.95rem}
+.cp.used{filter:saturate(.6)}
+.cp.used::after{opacity:1;transform:translateY(-50%) rotate(-12deg) scale(1)}
+
+.poem{background:#fff;border:2px solid var(--ink);border-radius:26px;padding:38px 20px 28px;box-shadow:0 8px 0 var(--mint);text-align:center;position:relative}
+.poem h3{font-family:'Caveat',cursive;font-weight:700;font-size:2.2rem;line-height:1;margin:0 0 18px;color:var(--ink)}
+.poem p{font-family:'Caveat',cursive;font-weight:500;font-size:1.55rem;line-height:1.3;margin:0}
+.poem .d{color:var(--straw);margin:14px 0;font-size:1.1rem}
+/* note */
+.note{width:min(300px,86vw);margin:0 auto;background:var(--butter);padding:34px 24px 30px;box-shadow:0 12px 24px -10px rgba(74,43,58,.4);transform:rotate(2deg);text-align:center;font-family:'Caveat',cursive;font-weight:700;font-size:1.8rem;line-height:1.15;min-height:170px;display:grid;place-items:center;position:relative}
+.cta{display:block;margin:24px auto 0;border:2px solid var(--ink);background:var(--straw);color:#fff;padding:12px 26px;border-radius:99px;font-weight:800;box-shadow:0 5px 0 var(--ink);transition:.15s}
+.cta:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+
+/* letter */
+.env{display:block;width:100%;background:var(--straw);color:#fff;border:2px solid var(--ink);border-radius:20px;padding:28px 20px;text-align:center;font-family:'Caveat',cursive;font-size:2rem;font-weight:700;box-shadow:0 8px 0 var(--ink);line-height:1}
+.env small{display:block;font-family:'Nunito';font-size:.85rem;font-weight:600;margin-top:6px;opacity:.9}
+.letter{max-height:0;overflow:hidden;transition:max-height 1.4s ease,margin .4s}
+.letter.open{max-height:1500px;margin-top:26px}
+.paper{background:#fff;padding:30px 24px;border-radius:6px;box-shadow:0 10px 24px -10px rgba(74,43,58,.4);background-image:repeating-linear-gradient(transparent 0 33px,#F3DDD3 33px 34px);transform:rotate(-.6deg)}
+.paper p{margin:0 0 .5em;font-family:'Caveat',cursive;font-weight:500;font-size:1.5rem;line-height:34px}
+.sign{text-align:right;color:var(--straw);font-weight:700!important}
+.finale{display:block;margin:40px auto 0;border:2px solid var(--ink);background:linear-gradient(135deg,var(--peach),var(--butter));padding:16px 30px;border-radius:99px;font-family:'Caveat',cursive;font-weight:700;font-size:1.7rem;box-shadow:0 6px 0 var(--ink)}
+#hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:6}
+.heart{position:absolute;bottom:-30px;font-size:26px;animation:rise linear forwards}
+@keyframes rise{to{transform:translateY(-112vh) rotate(24deg);opacity:0}}
+footer{padding:20px 0 70px;text-align:center;color:var(--soft);font-size:.95rem}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="hearts" aria-hidden="true"></div>
+
+<header class="hero">
+  <span class="fl" style="left:8%;top:60px" aria-hidden="true">🌸</span>
+  <span class="fl" style="right:9%;top:110px;animation-delay:1.2s" aria-hidden="true">💌</span>
+  <span class="fl" style="left:14%;top:330px;animation-delay:2s" aria-hidden="true">⭐</span>
+  <span class="fl" style="right:12%;top:380px;animation-delay:.6s" aria-hidden="true">🍓</span>
+  <div class="wrap">
+    <span class="badge">16–18 Kasım · vize haftası bitti</span>
+    <h1 id="title">Seni çok özledim<span>ses kaydı bile atamadım ama aklımdaydın</span></h1>
+    <p class="in">Bu sayfa, o üç günde sana söylemek isteyip söyleyemediklerimin küçük bir kutusu.</p>
+    <div class="vm" id="vm">
+      <button class="pb" id="pb" aria-label="Ses kaydını oynat">▶</button>
+      <div class="wave" id="wave"></div>
+      <span class="dur" id="dur">0:14</span>
+    </div>
+    <div class="trans"><small>Ses kaydı yazıya çevrildi</small><span id="tr">Oynatmak için ▶ tuşuna bas.</span></div>
+    <div class="tap">Dinlerken sessizliğimi de affet 🫶</div>
+  </div>
+</header>
+
+<main>
+<section><div class="wrap">
+  <h2>Özlediklerim</h2>
+  <p class="lead">Fotoğraflara dokun, arkasındaki notu oku.</p>
+  <div class="pol" id="pol"></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Özlem ölçer</h2>
+  <p class="lead">Seni ne kadar özlediğimi ölçmeye çalıştım. Sen çek, bakalım nereye kadar gidecek.</p>
+  <div class="card">
+    <div class="big" id="mEmoji">🙂</div>
+    <div class="say" id="mSay">Biraz özledim</div>
+    <input type="range" id="mr" min="0" max="100" value="30" aria-label="Özlem ölçer">
+    <div class="pct" id="mPct">%30</div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Seni sevmemin 5 sebebi</h2>
+  <p class="lead">Daha çok var ama beşi şimdilik yeter. Hepsine dokun.</p>
+  <div class="rs" id="rs"></div>
+  <div class="rt" id="rt">Bir kalbe dokun 💗</div>
+  <div class="cnt" id="cnt">0 / 5</div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Sana bir şiir</h2>
+  <p class="lead">Yazamadığım günlerin hesabını şiirle ödüyorum. Sonuna kadar oku.</p>
+  <div class="poem"><span class="tape"></span>
+  <h3>Üç Günün Şiiri</h3>
+  <p>Üç gün boyunca kitaplarda kayboldum,<br>Sayfa çevirdikçe daha çok yoruldum.<br>Ama her satırın ucunda sen duruyordun,<br>Yorgun gözlerime gülücük konduruyordun.</p>
+  <div class="d">♥</div>
+  <p>Gece yarısı telefonu elime aldım,<br>Sana yazacaktım ama uykuya daldım.<br>Sabah olunca yeniden derse sarıldım,<br>Özlemi cebime koyup öylece kaldım.</p>
+  <div class="d">♥</div>
+  <p>Bir ses kaydın ne çok şey katardı,<br>Yorgunluğumu bir anda silip atardı.<br>Kulaklığı takıp seni dinlemek yetmişti,<br>Günün bütün yükü sesinle gitmişti.</p>
+  <div class="d">♥</div>
+  <p>Gülüşün aklıma geldi zor bir soruda,<br>Işık yaktı sanki karanlık bir kuyuda.<br>Cevabı bilmesem de güldüm kendime,<br>Çünkü yazılıydı adın kalbimin derinine.</p>
+  <div class="d">♥</div>
+  <p>Her gece yıldızlara baktım, hangisi sen diye,<br>Hepsi sana benzedi, parladı bana gülümseye.<br>Aynı gökyüzünün altındayız diye sevindim,<br>Bu düşünceyle yeniden derslerime döndüm.</p>
+  <div class="d">♥</div>
+  <p>Çıkışta herkes birine sarılıyordu,<br>Ben ise kollarını hayal ediyordum.<br>Kalabalıkta bile bir boşluk vardı yanımda,<br>O boşluğun adı sendin, sen eksiktin o anda.</p>
+  <div class="d">♥</div>
+  <p>Sana anlatacak o kadar şey biriktirdim ki,<br>Bir ses kaydına sığmaz belki, bir gece yetmez belki.<br>Sen sadece gül, ben anlatırım baştan sona,<br>Bu defa söz, yazacağım her zaman sana.</p>
+  <div class="d">♥</div>
+  <p>Teşekkür ederim sabrına, o güzel kalbine,<br>Sessizliğimi bile anlayan büyük yüreğine.<br>Sende bulduğum huzuru hiçbir yerde bulamam,<br>Senden uzak geçen günü bir daha sayamam.</p>
+  <div class="d">♥</div>
+  <p>Şimdi bitti işte, kapandı tüm kitaplar,<br>Yüzümde gülümseme, kalbimde yeni baharlar.<br>Zaman artık sadece bizim olacak,<br>Gülüşün yeniden gözlerime dolacak.</p>
+  <div class="d">♥</div>
+  <p>Şiirimi bitirirken tek bir şey söylerim,<br>Seni çok özledim, hem de çok severim.<br>Bu kez sesin yetmez, gözlerine bakacağım,<br>Sıkı sıkı sarılıp seni hiç bırakmayacağım.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Bugünün notu</h2>
+  <p class="lead">Her dokunuşta sana yeni bir not geliyor.</p>
+  <div class="note"><span id="nt">Bir not almak için aşağıdaki butona bas.</span></div>
+  <button class="cta" id="nb">Bana bir not ver</button>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Sana bir mektup</h2>
+  <button class="env" id="env" aria-expanded="false">Mektubu aç 💌<small>sadece senin için</small></button>
+  <div class="letter" id="letter"><div class="paper">
+    <p id="hi">Canım,</p>
+    <p>Bu hafta sana çok az yazdım, biliyorum. Her gün sınav, ders, uykusuzluk derken günler su gibi aktı.</p>
+    <p>Ama sessiz kalmam seni düşünmediğim anlamına gelmedi. Kitaplarımın arasında aklıma ilk gelen hep sen oldun.</p>
+    <p>Sabrın ve anlayışın için teşekkür ederim. Yanımda olduğunu hep hissettim.</p>
+    <p>Şimdi sıra sende, sen ne istersen onu yapalım. Seni çok özledim.</p>
+    <p class="sign">Hep senin ♥</p>
+  </div></div>
+  <button class="finale" id="love">Ben de özledim 💗</button>
+</div></section>
+</main>
+<footer><div class="wrap">Bu sayfa sadece senin için yapıldı 🍓</div></footer>
+
+<script>
+/* Düzenlemek için bu bölümü değiştir */
+const NAME = "";  // örn. "Elif" yazarsan mektupta görünür
+const VOICE = "Vizeler bitti. Bu hafta sana ses kaydı bile atamadım ama seni çok özledim. Bu sefer ben anlatacağım, sen sadece dinle.";
+const POL = [["🎧","Ses kayıtların","Attığın ses kayıtlarını dinlemek, günün en güzel molası. Sesini çok özledim."],["😄","Gülüşün","En zor sorudan sonra bile aklıma gelince içim ısınıyor."],["🤗","Sarılışın","Üç günün yorgunluğunu tek seferde alacak olan şey."],["🍰","Sıradan günlerimiz","Bir şeyler yemek, yürümek, hiçbir şey yapmadan yan yana durmak."]];
+const REASONS = ["Beni sakinleştirmen","Güldüğünde gözlerin","Beni anladığın için","Yanında kendim olabildiğim için","Sessizliğimi yanlış anlamadığın için"];
+const NOTES = ["Bugün de harika görünüyorsundur 🌷","Bana bir ses kaydı at, hasret gider 🎧","Seni düşününce vizeler küçüldü","Gülüşün dünyanın en güzel şeyi","İyi ki varsın, iyi ki benimsin","Bugün sana sıkı sıkı sarılıyorum 🫶","Sen benim en sevdiğim insansın","Yakında görüşeceğiz, sabırsızım 🍓"];
+const METER = [[10,"🙂","Biraz özledim"],[30,"😊","Epey özledim"],[55,"🥺","Çok özledim"],[75,"😭","Hem de çok çok özledim"],[90,"🥹","Dayanamıyorum artık"],[100,"💥","Ölçüm cihazı bozuldu, sınırı aştı"]];
+
+const $=id=>document.getElementById(id);
+if(NAME)$('hi').textContent=NAME+",";
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function hearts(n){const box=$('hearts');if(reduce)return;
+ for(let i=0;i<n;i++){const h=document.createElement('span');h.className='heart';h.textContent=['♥','🌸','💗','🍓'][i%4];
+  h.style.left=Math.random()*95+'%';h.style.animationDuration=(3+Math.random()*3)+'s';h.style.animationDelay=(i*.12)+'s';
+  box.appendChild(h);setTimeout(()=>h.remove(),7500);}}
+
+/* voice message */
+const wave=$('wave'),bars=[];
+for(let i=0;i<30;i++){const b=document.createElement('i');b.style.setProperty('--h',(18+Math.abs(Math.sin(i*1.7))*22+Math.random()*10)+'px');b.style.animationDelay=(i*.04)+'s';wave.appendChild(b);bars.push(b);}
+let playing=false,timer;
+$('pb').onclick=()=>{
+ if(playing)return;playing=true;const vm=$('vm');vm.classList.add('play');$('pb').textContent='❚❚';
+ const words=VOICE.split(' '),total=14,step=total*1000/words.length;let i=0;$('tr').textContent='';
+ bars.forEach(b=>b.classList.remove('on'));
+ timer=setInterval(()=>{
+  $('tr').textContent=words.slice(0,i+1).join(' ');
+  const k=Math.round((i+1)/words.length*bars.length);bars.forEach((b,j)=>b.classList.toggle('on',j<k));
+  $('dur').textContent='0:'+String(Math.max(0,total-Math.round((i+1)*step/1000))).padStart(2,'0');
+  i++;if(i>=words.length){clearInterval(timer);vm.classList.remove('play');$('pb').textContent='↻';$('dur').textContent='0:14';playing=false;hearts(10);}
+ },reduce?10:step);
+};
+
+/* polaroids */
+POL.forEach(([e,t,n])=>{const b=document.createElement('button');b.className='po';b.setAttribute('aria-label',t);
+ b.innerHTML='<div class="ph"></div><b></b>';const ph=b.querySelector('.ph');ph.textContent=e;b.querySelector('b').textContent=t;
+ let on=false;b.onclick=()=>{on=!on;ph.textContent=on?n:e;ph.classList.toggle('t',on);};$('pol').appendChild(b);});
+
+/* meter */
+$('mr').oninput=e=>{const v=+e.target.value;const m=METER.find(x=>v<=x[0])||METER[5];
+ $('mEmoji').textContent=m[1];$('mSay').textContent=m[2];$('mPct').textContent=v===100?'%∞':'%'+v;
+ $('mEmoji').style.transform='scale('+(1+v/120)+')';if(v===100)hearts(14);};
+
+/* reasons */
+let opened=0;
+REASONS.forEach(t=>{const b=document.createElement('button');b.className='r';b.textContent='💗';b.setAttribute('aria-label','Sebebi aç');
+ b.onclick=()=>{if(!b.classList.contains('open')){b.classList.add('open');opened++;$('cnt').textContent=opened+' / 5';if(opened===5)hearts(16);}
+  $('rt').textContent=t;};$('rs').appendChild(b);});
+
+
+/* notes */
+let ni=-1;$('nb').onclick=()=>{let k;do{k=Math.floor(Math.random()*NOTES.length)}while(k===ni);ni=k;$('nt').textContent=NOTES[k];hearts(4);};
+
+/* letter */
+$('env').onclick=()=>{const o=$('letter').classList.toggle('open');$('env').setAttribute('aria-expanded',o);if(o)hearts(8);};
+$('love').onclick=()=>hearts(34);
+</script>
+</body>
+</html>
